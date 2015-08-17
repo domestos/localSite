@@ -8,6 +8,9 @@
 	<!--   Scan Controller -->
 	<context:component-scan base-package="com.local.site.controller"></context:component-scan>
 
+	  <!-- Insert Context -->   
+	<import resource="classpath:/applicationContext.xml" />
+	<!-- security:global-method-security secured-annotations="enabled"/ -->
 	
 
 	<!-- tiles -->
