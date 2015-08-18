@@ -3,12 +3,18 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="primary" transaction-type="RESOURCE_LOCAL">
-		<class>com.spring.domain.Cartridge</class>
-		<class>com.spring.domain.Company</class>
+		<class>com.local.site.model.Cartridge</class>
+		<class>com.local.site.model.FilledCartridge</class>
+		<class>com.local.site.model.Owner</class>
+		<class>com.local.site.model.Role</class>
+		<class>com.local.site.model.TempList</class>
+		<class>com.local.site.model.User</class>
+
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://82.207.109.251/varenik?useEncoding=true&amp;characterEncoding=UTF-8"/> 
-			<!--<property name="hibernate.connection.url" value="jdbc:mysql://10.14.1.252/varenik?useEncoding=true&amp;characterEncoding=UTF-8" />-->
+			<!-- <property name="hibernate.connection.url" value="jdbc:mysql://82.207.109.251/varenik?useEncoding=true&amp;characterEncoding=UTF-8"/> -->
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://10.14.1.252/varenik?useEncoding=true&amp;characterEncoding=UTF-8" />
 			<property name="hibernate.connection.username" value="varenik" />
 			<property name="hibernate.connection.password" value="Gladiator000" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
