@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+  
 <!-- Static Navbar  -->
 	<nav class="navbar navbar-default navbar-static-top">
 		<div class="container">
@@ -13,13 +15,13 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Support</a>
+				<a class="navbar-brand" href="index">Support</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li class="active"><a href='<spring:url value="index"/>'>Home</a></li>
+					<li><a href='<spring:url value="admin"/>'>Admin page</a></li>
+				<!-- 					
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -32,6 +34,8 @@
 							<li><a href="#">Separated link</a></li>
 							<li><a href="#">One more separated link</a></li>
 						</ul></li>
+					 -->	
+					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">login</a></li>

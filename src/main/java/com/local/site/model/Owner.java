@@ -10,18 +10,50 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="owner")
+@Table(name = "owner")
 public class Owner {
 
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	private String name;
 
-	@OneToMany(mappedBy="owner")	
+	private String email;
+
+	private String phone;
+
+	@OneToMany(mappedBy = "owner")
 	private List<Cartridge> cartridges;
-	
+		
+	public Owner() {
+		super();
+		
+	}
+
+	public Owner(String name, String phone, String email) {
+		super();
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -45,7 +77,5 @@ public class Owner {
 	public void setCartridges(List<Cartridge> cartridges) {
 		this.cartridges = cartridges;
 	}
-	
-	
-	
+
 }
