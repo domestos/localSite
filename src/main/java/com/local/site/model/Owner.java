@@ -33,9 +33,9 @@ public class Owner {
 
 	public Owner(String name, String phone, String email) {
 		super();
-		this.name = name;
-		this.phone = phone;
+		this.name = name;		
 		this.email = email;
+		this.phone = phone;
 	}
 
 	public String getEmail() {

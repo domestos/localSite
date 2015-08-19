@@ -1,5 +1,7 @@
 package com.local.site.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -21,4 +23,7 @@ public class OwnerServiceImpl extends RepositoryServiceImpl<Owner> implements Ow
 		return dao;
 	}
 
+	
+	
+	
 }

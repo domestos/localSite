@@ -1,7 +1,13 @@
+<%@page import="com.local.site.service.OwnerService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jstl"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
+<%@ page import="java.util.List"%>
+<%@ page import="com.local.site.model.Owner"%>
+<%@ page import="com.local.site.model.Cartridge"%>
 
 <h1>admin page</h1>
 <div>
@@ -21,7 +27,8 @@
 			<h3>Owner info.</h3>
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-primary btn-lg"
-				data-toggle="modal" data-target="#myModal"><strong>+</strong> Add new owner
+				data-toggle="modal" data-target="#myModal">
+				<strong>+</strong> Add new owner
 			</button>
 
 			<!-- Modal -->
@@ -38,27 +45,28 @@
 						</div>
 						<div class="modal-body">
 							<!-- From -->
-							<form role="form" action="createOwner" method="POST" accept-charset="UTF-8">
+							<form role="form" action="createOwner" method="POST"
+								accept-charset="UTF-8">
 								<div class="form-group">
 									<label for="labelOwner">Name owner</label> <input type="text"
-										class="form-control" id="labelOwner" name="name"  placeholder="Name">
+										class="form-control" id="labelOwner" name="name"
+										placeholder="Name">
 								</div>
 
 								<div class="form-group">
 									<label for="labelEmail1">Email address</label> <input
-										type="email" class="form-control" id="labelEmail"
-										name="email" placeholder="Email">
+										type="email" class="form-control" id="labelEmail" name="email"
+										placeholder="Email">
 								</div>
-								
-								
+
+
 								<div class="form-group">
-									<label for="labelPhone">Phone</label> <input
-										type="text" class="form-control" id="labelPhone"
-										 name="phone" placeholder="+380(xx) xx-xx-xxx">
+									<label for="labelPhone">Phone</label> <input type="text"
+										class="form-control" id="labelPhone" name="phone"
+										placeholder="+380(xx) xx-xx-xxx">
 								</div>
-								
+
 								<!-- End From -->
-								
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
@@ -72,35 +80,39 @@
 			<!-- END Modal -->
 
 			<!-- Table -->
+			
+
 			<table class="table">
 				<caption>Optional table caption.</caption>
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Username</th>
+						<th>Owner name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>edit</th>
+						<th>delete</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-					</tr>
+				
+					<jstl:forEach items="${owners}" var="owner">
+					<% int i=1;i++; %>
+						<tr>
+							
+							<td><%= i %> </td>
+							<td>
+							<a href='<spring:url value="view/${owner.id}"/>'>
+													${owner.name}
+							</a>
+							</td>
+							<td>${owner.email}</td>
+							<td>${owner.phone}</td>
+							<td><a href='<spring:url value="edit/${owner.id}"/>'>edit</a></td>
+							<td><a href='<spring:url value="delete/${owner.id}"/>'>delete</a></td>
+
+						</tr>
+					</jstl:forEach>
 				</tbody>
 			</table>
 			<!-- END Table -->
