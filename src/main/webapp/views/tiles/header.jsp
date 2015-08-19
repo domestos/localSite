@@ -8,6 +8,12 @@
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx"%>
 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<!-- <jstl:set var="baseURL" value="${fn:replace(String.valueOf(pageContext.request.requestURL), pageContext.request.requestURI, pageContext.request.contextPath)}" />
+ -->
+<jstl:set var="baseURL" value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
+
 <tilesx:useAttribute name="current" />
 <!-- Static Navbar  -->
 <nav class="navbar navbar-default navbar-static-top">
@@ -22,8 +28,9 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="${current == 'index' ? 'active' : ''}"><a href='<spring:url value="index"/>'>Home</a></li>
-				<li class="${current == 'admin' ? 'active' : ''}"><a href='<spring:url value="admin"/>'>Admin page</a></li>
+			
+				<li class="${current == 'index' ? 'active' : ''}"><a href='<jstl:out value="${baseURL}/index"/>'>Home</a></li>
+				<li class="${current == 'admin' ? 'active' : ''}"><a href='<spring:url value="${baseURL}/admin"/>'>Admin page</a></li>
 				<!-- 					
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
