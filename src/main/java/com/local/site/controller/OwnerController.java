@@ -12,32 +12,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.local.site.model.Cartridge;
 import com.local.site.model.Owner;
+import com.local.site.service.CartridgeService;
 import com.local.site.service.OwnerService;
 
 
 @Controller
 public class OwnerController {
 
-
+	@Autowired
+	private CartridgeService caertridgeService;
+	
+	
+	
 @Autowired
-private OwnerService service;
+private OwnerService ownerService;
 	
 	@RequestMapping(value = "/createOwner", method = RequestMethod.POST)
-	public String insertCompany(Model model, @RequestParam(value = "name") String name,
+	public String saveOwner(Model model, @RequestParam(value = "name") String name,
 			@RequestParam(value = "email") String email, @RequestParam(value = "phone") String phone)
 					throws SQLException {
 		Owner owner = new Owner();
 		owner.setName(name);
 		owner.setEmail(email);
 		owner.setPhone(phone);
-		service.save(owner);
+		ownerService.save(owner);
 		return "redirect:/admin";
 	}
 	
 @RequestMapping("/admin")
 public String  showAllOwner(Model model){
-	List<Owner> owners = service.findAll();
+	List<Owner> owners = ownerService.findAll();
 	model.addAttribute("owners" , owners);	
 	return "admin";
 }
@@ -47,7 +53,11 @@ public String  showAllOwner(Model model){
 @RequestMapping(value = "/view/{id}")
 public String viewOwner(Model model, @PathVariable int id ){
 	
-	model.addAttribute("owner", service.findOne(id));
+	Owner owner =  ownerService.findOne(id);
+	model.addAttribute("owner", owner );
+	List<Cartridge> cartridges=  caertridgeService.findByProperty("owner", owner );
+	
+	
 	return "viewOwner";
 }
 

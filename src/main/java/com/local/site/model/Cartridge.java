@@ -2,7 +2,9 @@ package com.local.site.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,15 +28,15 @@ public class Cartridge {
 	@GeneratedValue
 	private int id;
 	
-	@ManyToOne
+	@ManyToOne (cascade=CascadeType.ALL , fetch=FetchType.EAGER)
 	@JoinColumn(name="owner_id")
 	private Owner owner;
 
-	private String email;
+	private String type;
 	
-	private String phone;
+	private String number;
 	
-	@OneToMany(mappedBy="cartridge")
+	@OneToMany(mappedBy="cartridge" )
 	private List<TempList> templist;
 	
 	@OneToMany(mappedBy="cartridge")
@@ -56,20 +58,20 @@ public class Cartridge {
 		this.owner = owner;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getType() {
+		return type;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getNumber() {
+		return number;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 	public List<TempList> getTemplist() {

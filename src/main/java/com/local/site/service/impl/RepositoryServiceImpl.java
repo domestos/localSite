@@ -46,8 +46,7 @@ public abstract class RepositoryServiceImpl<T> implements RepositoryService<T> {
 
 	@Override
 	public List<T> findByProperty(String property, Object value) {
-		// TODO Auto-generated method stub
-		return null;
+		return 	 getMainDao().findByProperty(property, value);
 	}
 
 	@Override

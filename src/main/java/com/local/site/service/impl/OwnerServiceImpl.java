@@ -19,7 +19,6 @@ public class OwnerServiceImpl extends RepositoryServiceImpl<Owner> implements Ow
 	
 	@Override
 	public RepositoryDao<Owner> getMainDao() {
-		
 		return dao;
 	}
 

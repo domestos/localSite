@@ -2,7 +2,9 @@ package com.local.site.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -23,7 +25,7 @@ public class Owner {
 
 	private String phone;
 
-	@OneToMany(mappedBy = "owner")
+	@OneToMany(mappedBy = "owner", cascade=CascadeType.ALL , fetch=FetchType.EAGER)
 	private List<Cartridge> cartridges;
 		
 	public Owner() {
