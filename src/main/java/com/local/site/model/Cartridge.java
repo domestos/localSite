@@ -28,7 +28,7 @@ public class Cartridge {
 	@GeneratedValue
 	private int id;
 	
-	@ManyToOne (cascade=CascadeType.ALL , fetch=FetchType.EAGER)
+	@ManyToOne 
 	@JoinColumn(name="owner_id")
 	private Owner owner;
 

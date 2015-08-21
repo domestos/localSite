@@ -9,7 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Sort;
+import org.hibernate.annotations.SortType;
 
 @Entity
 @Table(name = "owner")
@@ -26,6 +30,7 @@ public class Owner {
 	private String phone;
 
 	@OneToMany(mappedBy = "owner", cascade=CascadeType.ALL , fetch=FetchType.EAGER)
+	
 	private List<Cartridge> cartridges;
 		
 	public Owner() {

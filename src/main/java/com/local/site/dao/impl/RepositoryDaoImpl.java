@@ -50,12 +50,19 @@ public class RepositoryDaoImpl<T> implements RepositoryDao<T> {
 	public T update(T entity) {
 		return em.merge(entity);
 	}
-
+/*
 	@SuppressWarnings("unchecked")
 	public List<T> findByProperty(String property, Object value) {
 		return em.createQuery(
 				"FROM" + getEntityClass() + "WHERE property = '" + value + "'").getResultList();
 	}
+	*/
+	@SuppressWarnings("unchecked")
+	public List<T> findByProperty(String property, Object value) {
+		return em.createQuery(
+				"FROM" + getEntityClass() + "WHERE property = '" + value + "'").getResultList();
+	}
+	
 
 	@Override
 	public int count() {
