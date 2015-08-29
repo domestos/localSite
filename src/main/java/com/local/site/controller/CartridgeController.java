@@ -14,7 +14,7 @@ import com.local.site.service.CartridgeService;
 import com.local.site.service.OwnerService;
 
 @Controller
-public class CartridgeСontroller {
+public class CartridgeController {
 
 	@Autowired
 	private CartridgeService cartridgeService;
