@@ -13,7 +13,7 @@ import com.local.site.dao.RepositoryDao;
 public class RepositoryDaoImpl<T> implements RepositoryDao<T> {
 
 	@PersistenceContext(unitName="primary")
-	private EntityManager em; 
+	protected EntityManager em; 
 		
 	
 	@Transactional

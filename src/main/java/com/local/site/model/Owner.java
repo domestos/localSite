@@ -29,7 +29,7 @@ public class Owner {
 
 	private String phone;
 
-	@OneToMany(mappedBy = "owner", cascade=CascadeType.ALL , fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "owner", cascade=CascadeType.ALL , fetch=FetchType.LAZY)
 	
 	private List<Cartridge> cartridges;
 		

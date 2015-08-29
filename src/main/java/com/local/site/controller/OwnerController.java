@@ -41,7 +41,7 @@ public class OwnerController {
 	@RequestMapping("/admin")
 	public String showAllOwner(Model model) {
 		List<Owner> owners = ownerService.findAll();
-		
+		Collections.reverse(owners);
 		model.addAttribute("owners", owners);
 		return "admin";
 	}
@@ -51,8 +51,10 @@ public class OwnerController {
 	@RequestMapping(value = "/view/{id}")
 	public String viewOwner(Model model, @PathVariable int id) {
 		model.addAttribute("owners", ownerService.findAll());
-		model.addAttribute("owner", ownerService.findOne(id));
-		model.addAttribute("cartridges", ownerService.findOne(id).getCartridges());
+		Owner owner = ownerService.findOne(id);
+		model.addAttribute("owner", owner);
+		model.addAttribute("cartridges", caertridgeService.findCartridges(owner));
+		//model.addAttribute("cartridges", ownerService.findOne(id).getCartridges());
 		return "viewOwner";
 	}
 
