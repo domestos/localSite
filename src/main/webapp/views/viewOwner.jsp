@@ -11,8 +11,10 @@
 <jstl:set var="baseURL"
 	value="${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, pageContext.request.contextPath)}" />
 
+
 <div class="row">
 	<div class="col-md-3">
+	<div class="alert alert-info" role="alert">
 		<hr>
 		<h3>Owner info</h3>
 		<hr>
@@ -35,9 +37,9 @@
 				</jstl:forEach>
 
 			</select> <br>
-			<button value="${owner.id}" type="submit" class="btn btn-default">Select</button>
+			<button value="${owner.id}" type="submit" class="btn btn-default btn-block">Select</button>
 		</form>
-
+</div>
 		<hr>
 
 
@@ -57,8 +59,11 @@
 					name="number" type="text" class="form-control" id="labelNumber"
 					placeholder="number">
 			</div>
+			
+			<div class=" form-group">
 			<button name="ownerId" value="${owner.id}" type="submit"
-				class="btn btn-default">Save</button>
+				class="btn btn-default btn-block">Save</button>
+				</div>
 		</form>
 		<hr>
 
@@ -69,6 +74,8 @@
 				<div class="col-md-3">Model cartridge</div>
 				<div class="col-md-3">Number Limk</div>
 				<div class="col-md-4">RQLink</div>
+				<div class="col-md-1">Edit</div>
+				<div class="col-md-1">Delete</div>
 			</strong>
 			<hr>
 		</div>
@@ -84,12 +91,31 @@
 				<div class="col-md-4">
 					<strong>RQ</strong>...
 				</div>
-				<hr>
-			</div>
+				<div class="col-md-1">
+					
+						<a href='<spring:url value="edit/${owner.id}"/>'>
+							<button type="button" class="btn  btn-block"
+								aria-label="Left Align">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true">
+									</span>
+							</button>
+						</a>
 
+					</div>
+					<div class="col-md-1">
+						<a href='<spring:url value="delete/${owner.id}"/>'>
+							<button type="button" class="btn  btn-block"
+								aria-label="Left Align">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true" ></span>
+							</button>
+						</a>
+					</div>
+				
+			</div>
+<hr>
 
 
 		</jstl:forEach>
 
-		<hr>
+	
 	</div>

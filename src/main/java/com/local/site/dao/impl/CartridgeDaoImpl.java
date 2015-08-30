@@ -13,7 +13,7 @@ import com.local.site.model.Cartridge;
 import com.local.site.model.Owner;
 @Repository
 public class CartridgeDaoImpl extends RepositoryDaoImpl<Cartridge> implements CartridgeDao{
-	
+	//get List<Cartridge> where owner=owner
 	@Transactional
 	@Override
 	public List<Cartridge> findCartridges(Owner owner) {

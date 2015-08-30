@@ -19,6 +19,8 @@
 			aria-controls="owner" role="tab" data-toggle="tab">Owner</a></li>
 		<li role="presentation"><a href="#cartridge"
 			aria-controls="cartridge" role="tab" data-toggle="tab">Cartridge</a></li>
+			<li role="presentation"><a href="#registration"
+			aria-controls="cartridge" role="tab" data-toggle="tab">Registration</a></li>
 
 	</ul>
 
@@ -29,10 +31,10 @@
 			<!-- Button trigger modal -->
 			<div class="row">
 				<div class="col-md-3">
-				<button type="button" class="btn  btn-default btn-block "
-					data-toggle="modal" data-target="#myModal">
-					<strong>+</strong> Add new owner
-				</button>
+					<button type="button" class="btn  btn-default btn-block "
+						data-toggle="modal" data-target="#myModal">
+						<strong>+</strong> Add new owner
+					</button>
 				</div>
 			</div>
 			<!-- Modal -->
@@ -84,97 +86,50 @@
 			<!-- END Modal -->
 
 			<!-- Table -->
-
-
 			<hr>
 			<div class="row  ">
 				<div class="col-md-4">Owner name</div>
-
 				<div class="col-md-3 ">Email</div>
-
 				<div class="col-md-3 ">Phone</div>
-				<div class="col-md-2 ">
-					<div class="row">
-
-						<div class="col-md-1">edit</div>
-						<div class="col-md-1">delet</div>
-					</div>
-
-				</div>
-
+				<div class="col-md-1">edit</div>
+				<div class="col-md-1">delete</div>
 			</div>
-			<HR>
-
+			<hr>
 			<jstl:forEach items="${owners}" var="owner">
 				<div class="row ">
 					<div class="col-md-4 ">
 						<a href='<spring:url value="view/${owner.id}"/>'>
 							<h4>${owner.name}</h4>
 						</a>
-
-
-
 					</div>
 					<div class="col-md-3">${owner.email}</div>
 					<div class="col-md-3">${owner.phone}</div>
-					<div class="col-md-2">
-
-						<button type="button" class="btn btn-warning   btn-block">
-							edit</button>
-						<button type="button" class="btn btn-danger  btn-smal btn-block">delet</button>
-						<!-- 
-						<a href='<spring:url value="edit/${owner.id}"/>'>edit</a> <a
-							href='<spring:url value="delete/${owner.id}"/>'>delete</a>
- -->
+					<div class="col-md-1">
+						<a href='<spring:url value="edit/${owner.id}"/>'>
+							<button title="edit" type="button" class="btn btn-block"
+								aria-label="Left Align">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true">
+								</span>
+							</button>
+						</a>
+					</div>
+					<div class="col-md-1">
+						<a href='<spring:url value="delete/${owner.id}"/>'>
+							<button title="delete" type="button" class="btn  btn-block"
+								aria-label="Left Align">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true">
+								</span>
+							</button>
+						</a>
 					</div>
 				</div>
 				<hr>
-
 			</jstl:forEach>
-
-<!-- 
-
-			<table class="table">
-				<caption>Optional table caption.</caption>
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Owner name</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>edit</th>
-						<th>delete</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<jstl:forEach items="${owners}" var="owner">
-						<%
-							int i = 1;
-								i++;
-						%>
-						<tr>
-
-							<td><%=i%></td>
-							<td><a href='<spring:url value="view/${owner.id}"/>'>
-									${owner.name} </a></td>
-							<td>${owner.email}</td>
-							<td>${owner.phone}</td>
-							<td><a href='<spring:url value="edit/${owner.id}"/>'>edit</a></td>
-							<td><a href='<spring:url value="delete/${owner.id}"/>'>delete</a></td>
-
-						</tr>
-					</jstl:forEach>
-				</tbody>
-			</table> -->
-			
 			<!-- END Table -->
-
-
-
-		</div>
+		</div><!-- END TABPANEL Owner -->
+		
+		<!--  TABPANEL Cartridge -->
 		<div role="tabpanel" class="tab-pane" id="cartridge">
-
 			<h3>Cartridge</h3>
 
 			<!-- Button trigger modal -->
@@ -182,8 +137,6 @@
 				data-toggle="modal" data-target="#modalCartridge">
 				<strong>+</strong> Add new owner
 			</button>
-
-
 
 			<!-- Modal -->
 			<div class="modal fade" id="modalCartridge" tabindex="-1"
@@ -203,17 +156,13 @@
 							<form role="form" action="createCartridge" method="POST"
 								accept-charset="UTF-8">
 								<div class="form-group">
-
 									<select name="companyId" class="form-control input-lg">
 										<option></option>
 										<jstl:forEach items="${owners}" var="owner">
 											<option value="${owner.id}">${owner.name}</option>
 										</jstl:forEach>
-
 									</select>
-
 								</div>
-
 								<div class="form-group">
 									<label for="labelEmail1">Email address</label> <input
 										type="email" class="form-control" id="labelEmail" name="email"
@@ -239,10 +188,46 @@
 				</div>
 			</div>
 			<!-- END Modal -->
+		</div>
+		<!-- END TABPANEL Cartridge -->
+		
+		
+		<!--  TABPANEL Registration-->
+		<div role="tabpanel" class="tab-pane" id="registration">
+			<h3>Registration</h3>
+				
+				<!-- From -->
+							<form role="form" action="registration" method="POST"
+								accept-charset="UTF-8">
+								<div class="form-group">
+								<label for="labelName">Name</label>
+									<input type="text" name="name" id="labelName" class="form-control " placeholder="Name">
+										
+								</div>
+								<div class="form-group">
+									<label for="labelEmail1">Email address</label> <input
+										type="email" class="form-control" id="labelEmail" name="email"
+										placeholder="Email">
+								</div>
 
+
+								<div class="form-group">
+									<label for="labelPhone">Phone</label> <input type="text"
+										class="form-control" id="labelPhone" name="phone"
+										placeholder="+380(xx) xx-xx-xxx">
+								</div>
+								
+								<div class="form-group">
+									<label for="labelPassword">Password</label> <input type="password"
+										class="form-control" id="labelPassword" name="password"
+										placeholder="password">
+								</div>
+								<button  type="submit" class="btn ">Save</button>
+								<!-- End From -->
+			
 
 		</div>
-
+		<!-- END TABPANEL Registration -->
 	</div>
 
 </div>
