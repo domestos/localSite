@@ -7,8 +7,8 @@
 	<http>
 	
 		<intercept-url pattern="/admin" access="hasRole('ADMIN')" />
-		
-		<form-login />
+		<csrf disabled="true"/>
+		<form-login login-page="/login" />
 		<logout />
 	</http>
 	<authentication-manager>

@@ -29,7 +29,7 @@
 
 		<form class="form-group" role="form"
 			action="${baseURL}/view/${owner.id}" method="POST">
-
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<select name="ownerId" class="form-control">
 				<option></option>
 				<jstl:forEach items="${owners}" var="owner">
@@ -49,6 +49,8 @@
 		<h4>Add new Cartridge</h4>
 		<form class="form-inline" role="form" action="createCartridge"
 			method="POST">
+			
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div class="form-group">
 				<label class="sr-only" for="labelType">model</label> <input
 					name="type" type="text" class="form-control" id="labelType"
