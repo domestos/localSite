@@ -59,12 +59,12 @@
 			<ul class="nav navbar-nav navbar-right">
 
 				<security:authorize access="! isAuthenticated()">
-					<li><a href="login">login</a></li>
+					<li><a href=<spring:url value="${baseURL}/login"/>>login</a></li>
 				</security:authorize>
 
 
 				<security:authorize access=" isAuthenticated()">
-					<li><a href="logout">logout</a></li>
+					<li><a href='<spring:url value="${baseURL}/logout"/>'>logout</a></li>
 				</security:authorize>
 
 			</ul>

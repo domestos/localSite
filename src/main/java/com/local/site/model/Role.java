@@ -10,12 +10,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity	
+@Entity
 @Table(name = "role")
 public class Role {
 
-	
-	
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -24,29 +22,24 @@ public class Role {
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
+	private String name;
+
+	@ManyToMany(mappedBy = "roles")
+
+	private List<User> users;
+
 	public List<User> getUsers() {
 		return users;
 	}
-
-
 
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 
-	private String name;
-
-	@ManyToMany(mappedBy="roles")
-	
-	private List<User> users;
-	
-	
 	public int getId() {
 		return id;
 	}
-	
-	
 
 	public void setId(int id) {
 		this.id = id;
@@ -59,7 +52,5 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
+
 }

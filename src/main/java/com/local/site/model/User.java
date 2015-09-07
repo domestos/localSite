@@ -7,14 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
-	
-	
 
 	public User() {
 		super();
@@ -24,17 +24,31 @@ public class User {
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
+	@Size(min = 3, message = "Name must be at least 3 characters!")
+	@Column(unique = true)
+
 	private String name;
-	
+
 	private String password;
-	
+
 	private String email;
-	
+
 	private String phone;
-	
-	@ManyToMany	
+
+	private boolean enabled;
+
+	@ManyToMany
+	@JoinTable
 	private List<Role> roles;
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	public int getId() {
 		return id;
@@ -89,12 +103,5 @@ public class User {
 		return "User [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", phone=" + phone
 				+ ", roles=" + roles + "]";
 	}
-	
-	 
 
-	
-	
-	
-	
-	
 }
